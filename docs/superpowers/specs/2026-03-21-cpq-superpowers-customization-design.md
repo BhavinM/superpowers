@@ -20,6 +20,16 @@ Contains highly focused sub-skills for specific lifecycle tasks to provide rigid
 - `maintenance.md`: Upgrading packages, auditing limits, or refactoring.
 - `bug-fixing.md`: Troubleshooting CPQ specific issues (e.g., cart pricing calculation errors, callback failures).
 
+#### Supported Conga CPQ Domains
+The sub-skills for Conga will specifically guide the AI on the implementation and testing of the following CPQ domains:
+- **Core Product & Catalog**: Schema creation/updates, Product catalog creation/updates.
+- **Rules & Constraints**: Product rules, Constraint rules.
+- **Attributes**: Attributes, Attribute rules, Attribute matrix.
+- **Pricing & Promotions**: Pricing setup, Pricing rules, Price matrices, Advanced pricing, Incentives.
+- **Extensions & Logic**: Callbacks.
+- **Security & Access**: Permission setup, Role Hierarchy.
+- **Advanced Features (Research additions)**: Asset-Based Ordering (Renewals/Amendments/Cancellations), Quote Document Generation, Advanced Approvals/Workflows, Guided Selling (Interviews/Questionnaires), Subscription Management (MDQ), and Localization/Multi-currency.
+
 ## Data Flow / User Experience
 
 1. **User Request:** "Help me migrate old pricing rules to Conga CPQ."
