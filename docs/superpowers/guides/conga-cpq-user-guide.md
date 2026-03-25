@@ -2,6 +2,8 @@
 
 Welcome to the Autonomous Conga CPQ Implementer! This guide explains how to leverage your AI Agent and the underlying Python toolchain to automatically build, configure, and deploy Conga CPQ tasks natively in Salesforce using simple natural language.
 
+> **Using GitHub Copilot (VS Code)?** This entire Python/Markdown ecosystem is built to natively interoperate with Github Copilot workflows. Read the specific [GitHub Copilot Integration Guide](github-copilot-integration-guide.md) to instantly bootstrap Copilot Chat inside this CPQ agency!
+
 ---
 
 ## The Core Concept
