@@ -11,10 +11,12 @@ Phase 1 gave the AI the ability to discover data, write code/config, and deploy.
 
 ---
 
-### Task 1: Environment Migration Engine (`scripts/migration/cpq_data_migrator.py`)
-Currently, deploying Apex/Flows is automated, but moving thousands of CPQ Data Records (Products, Options, Price Rules) across Salesforce Sandboxes usually requires expensive 3rd-party tools.
-- **Goal:** A Python script utilizing the SF Bulk API that exports `Apttus_Config2` relational data trees from a Source Org and upserts them sequentially into a Target Org, resolving relational ID lookups automatically.
-- **AI Integration:** The AI can use this to say, "Migrate the Laptop Pricing configuration from Sandbox UAT to Production."
+### Task 1: Environment Migration Engine (`scripts/migration/cpq_env_migrator.py`)
+Moving full CPQ architectures across Salesforce Sandboxes usually requires expensive 3rd-party tools because it involves both massive relational Data and scattered Custom Metadata.
+- **Goal:** A comprehensive 2-stage Python migration engine:
+  1. **Metadata Sync Phase:** Autonomously retrieves Custom Objects and Custom Fields (especially custom fields newly added directly to core Conga objects like `Apttus_Config2__LineItem__c` or standard objects like `Opportunity`) from the Source Org and deploys them to the Target Org to ensure schema parity.
+  2. **Data Sync Phase:** Utilizes the SF Bulk API to export `Apttus_Config2` relational data trees and upserts them sequentially into the Target Org, automatically resolving foreign key relationships (like Product Options to Product).
+- **AI Integration:** The AI can use this to say, "Migrate the Laptop Pricing Product Catalog and all its custom attribute fields from Sandbox UAT to Production."
 
 ### Task 2: Automated Cart API Tester (`scripts/testing/cpq_cart_tester.py`)
 Testing CPQ pricing rules manually by clicking through the UI takes engineers hours. 
