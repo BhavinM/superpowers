@@ -116,6 +116,17 @@ Start a new session in your chosen platform and ask for something that should tr
 
 **The agent checks for relevant skills before any task.** Mandatory workflows, not suggestions.
 
+## Autonomous CPQ Agency (Enterprise Extension)
+Included natively within this repository is our advanced **6-Persona Autonomous CPQ Architecture Toolchain**, elevating this coding agent into an end-to-end Enterprise Implementation expert.
+
+- **Universal Multi-Vendor Engine**: Operates seamlessly across Conga CPQ, Salesforce Revenue Cloud, and Steelbrick.
+- **The 6-Persona Architecture**: Triggers `/cpq-e2e-project` to weave through Virtual Project Managers, Business Analysts, Solutions/Technical Architects, and deterministic QA.
+- **Mathematical Cart Validation**: Compiles and asserts exact structural matrix math via `cpq_cart_tester.py` prior to sandbox release.
+- **Enterprise Governance**: Deploys with native Data Masking (`cpq_data_masker.py`), Apex CPU Limits Profiling (`cpq_performance_analyzer.py`), and Autonomous GitHub Actions Self-Healing crons.
+- **Seamless Copilot UI Integration**: Natively supports [GitHub Copilot Custom Instructions](docs/superpowers/guides/github-copilot-integration-guide.md) and interactive Streamlit/LWC chat interfaces.
+
+Read the [Comprehensive CPQ User Guide](docs/superpowers/guides/conga-cpq-user-guide.md) to bootstrap your virtual agency immediately!
+
 ## What's Inside
 
 ### Skills Library
