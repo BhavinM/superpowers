@@ -13,12 +13,20 @@
 - **Output:** A highly detailed `.agents/requirements/Req_CPQ_001.md` document that leaves no ambiguity.
 
 ### Task 2: The CPQ Solutions Architect Skill (`skills/cpq-solutions-architect/SKILL.md`)
-- **Purpose:** Translates the BA Requirements into native Conga CPQ technical constructs.
-- **Functionality:** Reads the BA's requirement and determines the most optimal, standard CPQ architecture to solve it.
-  - Maps requirements to standard Conga components (e.g., determining a *Price Matrix* is better than writing an *Apex Pricing Callback*).
-  - Identifies which Custom Fields, Metadata, or Salesforce Core Flows are required.
-- **Output:** A formal `CPQ_Technical_Design.md` that serves as a rigid blueprint for the Builder tools.
+- **Purpose:** Translates BA Requirements into a functional CPQ Solution Design.
+- **Functionality:** Determines the most optimal, standard CPQ architecture (e.g., "Solve this using a Price Matrix, not an Apex Callback").
+- **Output:** A formal Solution Design Spec (FSD).
 
-### Task 3: The End-to-End Master Workflow
+### Task 3: The CPQ Technical Architect Skill (`skills/cpq-technical-architect/SKILL.md`)
+- **Purpose:** Converts the high-level Solution Design into a rigid, low-level Technical Design Document (TDD). 
+- **Functionality:** Defines exact API names, field types, required SOQL structure, and JSON data tree schema. This is the exact blueprint handed directly to the Implementation Engine.
+- **Output:** A formal Technical Design Spec (TDD) holding all schema mappings.
+
+### Task 4: The CPQ QA/Test Architect Skill (`skills/cpq-qa-architect/SKILL.md`)
+- **Purpose:** Translates the BA requirements into mathematically precise Test Cases for the automated pipeline.
+- **Functionality:** Designs exact positive/negative execution scenarios (e.g., "Add Laptop ID 123 with Option X; Assert Net Price = $900"). Supplies the precise parameters needed to fuel `cpq_cart_tester.py` without humans having to invent the test data.
+- **Output:** A Master Test Plan document mapping use cases to expected CPQ Cart math.
+
+### Task 5: The End-to-End Master Workflow
 - **Purpose:** Update the overarching documentation and workflows to connect the entire journey into a seamless pipeline.
-- **Flow:** `Business Analyst` (Elicits needs) ➔ `Solutions Architect` (Designs the schema) ➔ `Autonomous Builder` (Deploys the data/code) ➔ `Cart Tester` (Asserts the math) ➔ `Environment Migrator` (Syncs to Prod).
+- **Flow:** `Business Analyst` (Elicits Needs) ➔ `Solutions Architect` (Functional approach) ➔ `Technical Architect` (Low-level specs) ➔ `QA Architect` (Test Plans) ➔ `Autonomous Builder` (Deploys data/code) ➔ `Cart Tester` (Validates math) ➔ `Environment Migrator` (Syncs to Prod).
