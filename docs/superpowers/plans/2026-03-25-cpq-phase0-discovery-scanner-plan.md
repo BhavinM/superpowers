@@ -7,10 +7,10 @@
 ## Architectural Components
 
 ### 1. The Python Scanner (`scripts/discovery/cpq_environment_scanner.py`)
-This standalone script executes an exhaustive array of `sf data query` commands to dump the current state of CPQ into a markdown text file. 
-- **Relational Data Scanned:** It queries for currently Active Price Lists, Price Rules, Constraints, and Product families.
-- **Apex Code Scanned:** It queries the Salesforce `ApexClass` table to discover any existing implementations of the `Apttus_Config2.CustomPricingCallback3`, `ValidationCallback`, or `ProductFilterCallback` interfaces.
-- **Metadata Scanned:** It identifies any foundational Custom Fields added to the `Apttus_Config2__LineItem__c` and `Apttus_Proposal__Proposal__c` objects.
+This standalone script executes an exhaustive array of SFDX Tooling API queries and standard Data queries to dump the complete, intertwined state of CPQ into a markdown text file. 
+- **Relational CPQ Data Scanned:** Queries Active Price Lists, Price Rules, Constraint Rules, and Product Catalogs.
+- **Advanced Apex Dependencies:** Queries the `MetadataComponentDependency` and `ApexClass` tables to discover `Apttus_Config2` Callback implementations AND traces the execution tree to identify any helper classes, utility methods, or trigger handlers those callbacks depend on.
+- **Salesforce Core Metadata:** Identifies custom CPQ architectures including existing Custom Fields, Custom Settings, Custom Metadata Types (`__mdt`), Record-Triggered Flows bound to CPQ objects, and actively assigned CPQ Permission Sets and Profiles.
 
 ### 2. The RAG Output Report (`.agents/reports/CPQ_Discovery_Report.md`)
 The Python script formats everything it queried into a beautiful Markdown artifact. 
