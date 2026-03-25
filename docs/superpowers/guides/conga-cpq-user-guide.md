@@ -101,6 +101,39 @@ The deployer pushes the code to Salesforce and generates a clean Markdown status
 
 ---
 
+## Phase 2 Capabilities: Migration, Testing, & Validation
+Beyond day-to-day implementation, the CPQ toolchain includes dedicated operations for Sandbox Lifecycle Management:
+
+### 1. The Environment Migration Engine
+You can instruct the AI to migrate CPQ configurations across Sandboxes without needing 3rd-party deployment tools. The engine performs a two-stage Metadata (`__c`, `__mdt`, Layouts, Permissions) and Data (`Apttus_Config2` relational trees) sync.
+**Prompt Example:**
+> "Run the CPQ Migration Engine in Delta Mode. Sync all Custom Fields and Price Rules modified since '2026-03-01' from Sandbox UAT to Production."
+
+### 2. Autonomous Cart API Tester
+The AI can mathematically prove its new pricing code works by silently spinning up an Apex Cart in the background.
+**Prompt Example:**
+> "Use the CPQ Cart Tester. Create a cart for Proposal P-001, add Laptop Product ID 12345, run the UpdatePrice API, and assert that the NetPrice is $900.00."
+
+### 3. Conga Template Validator
+Before deploying a `.docx` quote template, the AI can parse the inner XML to ensure no merge-fields will crash the generation engine.
+**Prompt Example:**
+> "Run the Conga Template Analyzer on `templates/Enterprise_Quote.docx` and verify all SObject bindings are valid against the schema."
+
+---
+
+## Value Proposition Summary
+
+**1. Faster Implementations (Zero-Touch Config)**
+Instead of a human manually clicking through 40 screens to build a nested Product Bundle and 5 Constraint Rules, the AI generates the unified JSON and pushes it via the `cpq_data_builder.py` simultaneously.
+
+**2. Safer Migrations (Schema + Data Parity)**
+CPQ Migrations fail because a custom field added to `Apttus_Config2__LineItem__c` wasn't migrated before the Data. The `cpq_env_migrator.py` automatically pulls the Salesforce Schema Metadata, deploys it to the target, and *then* upserts the relational CPQ Data trees natively.
+
+**3. Bug-Free Day-to-Day Maintenance (Scaffolding & Testing)**
+When fixing bugs or writing new Pricing logic, the AI never hallucinates Apex methods. It uses `scaffold_cpq_callback.py` to get the perfect boilerplate, writes the fix, and uses `cpq_cart_tester.py` to run standard `Apttus_CPQApi` methods to assert the math works before pushing to production.
+
+---
+
 ## Tips for Best Results
 - **Name your records:** If you want the AI to attach rules to existing products or price lists, mention their exact names (e.g., "The 'Hardware' category" or "The 'EMEA' Price List") so the AI's Discovery script can query them accurately.
 - **State the Lifecycle Phase:** Always tell the AI if you are doing a `New Implementation`, `Migration`, `Bug Fix`, or `Delta Change`. This dictates which overarching safety rules the AI applies.
