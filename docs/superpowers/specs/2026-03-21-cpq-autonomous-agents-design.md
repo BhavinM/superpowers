@@ -20,3 +20,11 @@ When natural language requirements involve procedural logic (e.g., dynamic exter
 ### 4. End-to-End Orchestration Workflow (`.agents/workflows/cpq-autonomous-implementation.md`)
 The glue that ties the LLM to the tools.
 - **Functionality:** A strict sequence prompt guiding the AI through parsing requirements, using `cpq_discover.py` to identify required IDs, deciding between declarative (`cpq_data_builder.py`) or programmatic (`scaffold_cpq_callback.py`) routes, and finally deploying.
+
+### 5. Architectural AI Personas (Phase 3)
+Specialized prompts located in `skills/` designed to flawlessly handle CPQ architecture.
+- **Functionality:** Interrogates stakeholders via the `cpq-business-analyst` to create a BRD, designs the functional matrices via the `cpq-solutions-architect`, blue-prints exact JSON/Apex schemas via the `cpq-technical-architect`, and writes deterministic testing math via the `cpq-qa-architect`.
+
+### 6. Enterprise Governance (Phase 4 & 5)
+Python scripts dedicated to InfoSec compliance, CI/CD, and deployment safety.
+- **Functionality:** Includes `cpq_rollback.py` for immediate environment reversions, `cpq_performance_analyzer.py` to audit Apex CPU limits from DML execution logs, and `cpq_data_masker.py` to securely sanitize active CPQ data before LLMs process architectural designs. Governed centrally by a top-level `cpq-autonomous-ci.yml` GitHub action.
