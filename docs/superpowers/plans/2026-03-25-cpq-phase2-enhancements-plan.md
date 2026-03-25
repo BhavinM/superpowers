@@ -21,7 +21,13 @@ Moving full CPQ architectures across Salesforce Sandboxes requires capturing the
 
 ### Task 2: Automated Cart API Tester (`scripts/testing/cpq_cart_tester.py`)
 Testing CPQ pricing rules manually by clicking through the UI takes engineers hours. 
-- **Goal:** A tool that the AI can use to instantly verify if its newly created Price Rules actually work. The script creates a test Proposal, spins up a Cart via the Conga CPQ API, adds specific products, calculates pricing, and validates if the `NetPrice` matches the expected outcome.
+- **Goal:** A Python Testing Framework that sequentially triggers the standard **Conga CPQ REST APIs** (or `Apttus_CPQApi` global methods via SFDX Apex invocation) to mathematically prove the AI's newly deployed pricing configurations actually work.
+- **Supported API Sequence:**
+  1. **Create Cart API:** (`Apttus_CPQApi.CPQ.CreateCartRequestDO`) - Spins up a headless cart for a Test Proposal.
+  2. **Add Products API:** (`Apttus_CPQApi.CPQ.AddMultiProductRequestDO`) - Supports inserting Standalone products and deeply nested Bundles with Options.
+  3. **Update Price API:** (`Apttus_CPQApi.CPQ.UpdatePriceRequestDO`) - Forces the execution of Price Rules, Constraint Rules, Matrices, and CustomPricingCallbacks.
+  4. **Finalize Cart API:** (`Apttus_CPQApi.CPQ.FinalizeCartRequestDO`) - Synchronizes the pricing totals back to the Quote object.
+- **AI Validation:** The AI can instruct the tool: "Invoke `cpq_cart_tester.py`, create a cart for Proposal P-001, add Laptop Product ID, run UpdatePrice, and assert that the final NetPrice strictly equals $900.00."
 
 ### Task 3: Conga Composer Template Validator (`scripts/validation/conga_template_analyzer.py`)
 Deploying `.docx` quote templates that contain invalid or misspelled merge fields (e.g., `{{Apttus_Proposal__Proposal__c.NonExistentField__c}}`) causes painful runtime errors when generating PDFs.
