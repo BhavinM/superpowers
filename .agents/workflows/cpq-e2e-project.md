@@ -6,6 +6,11 @@ description: The ultimate End-to-End Orchestrator. Trigger this with a basic bus
 
 When asked to run an end-to-end CPQ implementation, execute the following steps precisely in chronological order.
 
+## Phase 0: Discovery & Context Gathering
+1. **[Holistic Scanner]** // turbo-all
+   Run `python scripts/discovery/cpq_environment_scanner.py` to rigorously map the current org's CPQ metadata, dependencies, and rules. 
+   This automatically generates `.agents/reports/CPQ_Discovery_Report.md`. Provide this exact file path to the Architects when assigning them tasks.
+
 ## Phase 1: Agile Setup & Business Elicitation
 1. **[Project Manager]** Read the user's initial prompt. Establish the high-level Epic in your notes.
 2. **[Business Analyst]** Call the `using-cpq-business-analyst` skill to interrogate the user. Ask the probing questions regarding Bundling, Pricing Waterfalls, and Output Documents. DO NOT PROCEED until answered.
