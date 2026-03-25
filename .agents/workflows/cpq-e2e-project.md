@@ -22,11 +22,17 @@ When asked to run an end-to-end CPQ implementation, execute the following steps 
 3. **[QA Test Architect]** Pass the BRD and TDD to the `using-cpq-qa-architect` skill to write mathematically precise testing arrays (Inputs -> Outputs). Write `/docs/specs/CPQ_TestPlan.md`.
 
 ## Phase 3: Autonomous Implementation & Testing
-1. **[Autonomous Builder]** Call the `/cpq-autonomous-implementation` workflow. Execute `cpq_discover.py`, followed by `cpq_data_builder.py` or `scaffold_cpq_callback.py`, using the exact blueprints written in the TDD.
+1. **[Autonomous Builder]** Call the `/cpq-autonomous-implementation` workflow. Execute `scaffold_cpq_approvals.py` for approval logic or `cpq_data_builder.py` for pricing rules, using the exact blueprints dictated by the Technical Architect's TDD.
 2. **[Cart API Tester]** // turbo-all
-   Use the parameters defined in `CPQ_TestPlan.md` to run `python scripts/testing/cpq_cart_tester.py`. Assure the AI that the mathematical output matches the business expectation.
+   Use the parameters defined in `CPQ_TestPlan.md` to run `python scripts/testing/cpq_cart_tester.py`. Assure the AI that the mathematical output strictly matches business expectations.
 
-## Phase 4: Production Release
+## Phase 4: Governance & Performance Limits Analysis
+1. **[Performance Profiler]** // turbo-all
+   Extract the generating Debug Log ID from the tester's test-run. Execute `python scripts/testing/cpq_performance_analyzer.py --log_id <ID>` to assert that the `CustomPricingCallback` Apex loops did not violate Salesforce 10,000ms CPU or SOQL 101 limits.
+2. If limits are breached, fail the task and force the Technical Architect to refactor the pricing logic.
+
+## Phase 5: Production Release
 1. **[Migration Engine]** // turbo-all
+   Mandate a local pre-deployment backup via the `cpq_rollback.py` protocols.
    Run `python scripts/migration/cpq_env_migrator.py --mode delta` to push the perfectly verified Schema Metadata and Relational Data to the Target Sandbox.
-2. Report success to the user!
+2. Report total success back to the Agile Project Manager!
