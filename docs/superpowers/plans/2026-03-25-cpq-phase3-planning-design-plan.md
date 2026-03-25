@@ -4,7 +4,12 @@
 
 ---
 
-### Task 1: The CPQ Business Analyst Skill (`skills/cpq-business-analyst/SKILL.md`)
+### Task 1: The CPQ Project Manager (PM / Scrum Master) Skill (`skills/cpq-project-manager/SKILL.md`)
+- **Purpose:** Acts as the Lead Orchestrator for the entire virtual CPQ implementation agency.
+- **Functionality:** Ingests the raw business priorities, creates the overarching Epic and User Stories, and delegates sequentially to the BA, Architects, Builders, and Testers. Ensures strict adherence to the rollout methodology and manages the release schedule.
+- **Output:** A master `Project_Plan.md` or local Agile Tracker managing the state of all CPQ tickets.
+
+### Task 2: The CPQ Business Analyst Skill (`skills/cpq-business-analyst/SKILL.md`)
 - **Purpose:** Teaches the AI how to act as a senior CPQ Business Analyst to prevent "garbage in, garbage out" implementations.
 - **Functionality:** Instead of blindly accepting generic prompts like "Add a 10% discount", the Agent will cross-examine the user with a strict questionnaire framework depending on the request type:
   - **For Product/Bundling Requests:** "Are there min/max option limits?", "Do we need inclusion/exclusion Constraint Rules?"
@@ -27,6 +32,6 @@
 - **Functionality:** Designs exact positive/negative execution scenarios (e.g., "Add Laptop ID 123 with Option X; Assert Net Price = $900"). Supplies the precise parameters needed to fuel `cpq_cart_tester.py` without humans having to invent the test data.
 - **Output:** A Master Test Plan document mapping use cases to expected CPQ Cart math.
 
-### Task 5: The End-to-End Master Workflow
+### Task 6: The End-to-End Master Workflow
 - **Purpose:** Update the overarching documentation and workflows to connect the entire journey into a seamless pipeline.
-- **Flow:** `Business Analyst` (Elicits Needs) ➔ `Solutions Architect` (Functional approach) ➔ `Technical Architect` (Low-level specs) ➔ `QA Architect` (Test Plans) ➔ `Autonomous Builder` (Deploys data/code) ➔ `Cart Tester` (Validates math) ➔ `Environment Migrator` (Syncs to Prod).
+- **Flow:** `Project Manager` (Orchestrates Timeline) ➔ `Business Analyst` (Elicits Needs) ➔ `Solutions Architect` (Functional approach) ➔ `Technical Architect` (Low-level specs) ➔ `QA Architect` (Test Plans) ➔ `Autonomous Builder` (Deploys data/code) ➔ `Cart Tester` (Validates math) ➔ `Environment Migrator` (Syncs to Prod).
