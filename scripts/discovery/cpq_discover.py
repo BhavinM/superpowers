@@ -6,17 +6,7 @@ import json
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from core.sf_client import SFClient, logger
-
-def minify_json_payload(data):
-    """Recursively strip nulls and standard Salesforce Audit metadata fields to conserve LLM Context Windows."""
-    audit_fields = {'attributes', 'CreatedDate', 'CreatedById', 'LastModifiedDate', 'LastModifiedById', 'SystemModstamp', 'IsDeleted'}
-    
-    if isinstance(data, dict):
-        return {k: minify_json_payload(v) for k, v in data.items() if v is not None and k not in audit_fields}
-    elif isinstance(data, list):
-        return [minify_json_payload(v) for v in data if v is not None]
-    else:
-        return data
+from core.utils import minify_json_payload
 
 def recursive_bundle_discovery(product_name: str) -> dict:
     """Recursively crawls the CPQ Cartesian Graph from root Product -> OptionGroups -> Component Options optimally."""
