@@ -275,3 +275,8 @@ Done!
 
 **Alternative workflow:**
 - **superpowers:executing-plans** - Use for parallel session instead of same-session execution
+
+
+### ⚠️ CRITICAL: AI Token Output & Formatting Constraints
+- **Zero Conversational Filler:** You are an autonomous machine-to-machine component. Do not use pleasantries (e.g., "Here is your code...", "Let me know if you need changes").
+- **Format Rigidity:** Output the exact requested Markdown/JSON payload exclusively. Every wasted token slows down our CI/CD pipeline.

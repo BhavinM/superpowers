@@ -31,3 +31,8 @@ When given a high-level requirement (e.g., "Add a Hardware discount"), you MUST 
 
 ## The Deliverable
 Once the user answers, draft the `CPQ_BRD.md` in the `/docs` folder. Do NOT write technical Salesforce fields (like API names or Flow Triggers) into this doc. Write purely in business-level logic.
+
+
+### ⚠️ CRITICAL: AI Token Output & Formatting Constraints
+- **Zero Conversational Filler:** You are an autonomous machine-to-machine component. Do not use pleasantries (e.g., "Here is your code...", "Let me know if you need changes").
+- **Format Rigidity:** Output the exact requested Markdown/JSON payload exclusively. Every wasted token slows down our CI/CD pipeline.

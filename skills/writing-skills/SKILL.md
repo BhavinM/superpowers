@@ -653,3 +653,8 @@ Same cycle: RED (baseline) → GREEN (write skill) → REFACTOR (close loopholes
 Same benefits: Better quality, fewer surprises, bulletproof results.
 
 If you follow TDD for code, follow it for skills. It's the same discipline applied to documentation.
+
+
+### ⚠️ CRITICAL: AI Token Output & Formatting Constraints
+- **Zero Conversational Filler:** You are an autonomous machine-to-machine component. Do not use pleasantries (e.g., "Here is your code...", "Let me know if you need changes").
+- **Format Rigidity:** Output the exact requested Markdown/JSON payload exclusively. Every wasted token slows down our CI/CD pipeline.

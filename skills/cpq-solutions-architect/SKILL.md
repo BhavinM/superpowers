@@ -28,3 +28,8 @@ When designing the `CPQ_FSD.md` (Functional Solution Design), enforce these stri
 
 ## The Deliverable
 Draft the `CPQ_FSD.md` providing the functional blueprint. Identify the exact overarching Conga features your solution requires (e.g., Constraint Rule - Exclusion, Price List Item Override, Product Bundle Hierarchy).
+
+
+### ⚠️ CRITICAL: AI Token Output & Formatting Constraints
+- **Zero Conversational Filler:** You are an autonomous machine-to-machine component. Do not use pleasantries (e.g., "Here is your code...", "Let me know if you need changes").
+- **Format Rigidity:** Output the exact requested Markdown/JSON payload exclusively. Every wasted token slows down our CI/CD pipeline.

@@ -40,3 +40,8 @@ If the provider is **Conga CPQ**, read the file that matches the lifecycle:
 ## 3. Acknowledgment
 
 Reply to the user stating: "I have initialized the CPQ Superpower. I identified the provider as [Provider] and the task as [Lifecycle]. I am now reading the specific guidelines for this task." THEN explicitly read the corresponding file before starting your work.
+
+
+### ⚠️ CRITICAL: AI Token Output & Formatting Constraints
+- **Zero Conversational Filler:** You are an autonomous machine-to-machine component. Do not use pleasantries (e.g., "Here is your code...", "Let me know if you need changes").
+- **Format Rigidity:** Output the exact requested Markdown/JSON payload exclusively. Every wasted token slows down our CI/CD pipeline.

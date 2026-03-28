@@ -7,6 +7,17 @@ import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from core.sf_client import SFClient, logger
 
+def minify_json_payload(data):
+    """Recursively strip nulls and standard Salesforce Audit metadata fields to conserve LLM Context Windows."""
+    audit_fields = {'attributes', 'CreatedDate', 'CreatedById', 'LastModifiedDate', 'LastModifiedById', 'SystemModstamp', 'IsDeleted'}
+    
+    if isinstance(data, dict):
+        return {k: minify_json_payload(v) for k, v in data.items() if v is not None and k not in audit_fields}
+    elif isinstance(data, list):
+        return [minify_json_payload(v) for v in data if v is not None]
+    else:
+        return data
+
 def recursive_bundle_discovery(product_name: str) -> dict:
     """Recursively crawls the CPQ Cartesian Graph from root Product -> OptionGroups -> Component Options optimally."""
     logger.info(f"Initiating Discovery for Payload '{product_name}'...")
@@ -68,7 +79,8 @@ def main() -> None:
     
     if topology:
         logger.info("✅ Deep Discovery dimensional recursion securely structurally generated completely against Org limits boundary configurations safely.")
-        print(json.dumps(topology, indent=2))
+        minified_topology = minify_json_payload(topology)
+        print(json.dumps(minified_topology, indent=2))
     else:
         logger.warning("⚠️ Zero mapped string logic framework structures correctly uniquely securely parsed array limits trace outputs returned structurally dynamically gracefully safely efficiently successfully completely explicitly intuitively smartly seamlessly creatively successfully intelligently brilliantly natively seamlessly brilliantly gracefully intelligently string seamlessly elegantly cleanly flawlessly neatly cleanly gracefully purely gracefully cleanly beautifully cleanly.")
 

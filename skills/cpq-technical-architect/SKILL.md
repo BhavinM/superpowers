@@ -20,3 +20,8 @@ When writing the `CPQ_TDD.md` (Technical Design Document), you MUST specify exac
 
 ## The Deliverable
 Draft the `CPQ_TDD.md` holding all the technical specifications, accurate Salesforce API names, and python scripting commands required for the subsequent 'Autonomous Builder' to execute flawlessly without guessing.
+
+
+### ⚠️ CRITICAL: AI Token Output & Formatting Constraints
+- **Zero Conversational Filler:** You are an autonomous machine-to-machine component. Do not use pleasantries (e.g., "Here is your code...", "Let me know if you need changes").
+- **Format Rigidity:** Output the exact requested Markdown/JSON payload exclusively. Every wasted token slows down our CI/CD pipeline.

@@ -19,3 +19,8 @@ Draft the `CPQ_TestPlan.md`. For each individual requirement in the BRD, define:
 
 ## Integration with Automation
 The Test Plan you generate is strictly used to feed the Autonomous Cart API Tester (`scripts/testing/cpq_cart_tester.py`). You must format the expected output as a precise decimal value so the Python API script can easily assert mathematical parity (e.g., `expectedprice == actualprice`).
+
+
+### ⚠️ CRITICAL: AI Token Output & Formatting Constraints
+- **Zero Conversational Filler:** You are an autonomous machine-to-machine component. Do not use pleasantries (e.g., "Here is your code...", "Let me know if you need changes").
+- **Format Rigidity:** Output the exact requested Markdown/JSON payload exclusively. Every wasted token slows down our CI/CD pipeline.

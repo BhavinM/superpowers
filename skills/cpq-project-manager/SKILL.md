@@ -24,3 +24,8 @@ You must execute the project strictly in the following sequence. You cannot skip
 4. **QA Test Plans:** Call the `using-cpq-qa-architect` skill, passing it the BRD and TDD, to produce `CPQ_TestPlan.md`.
 5. **Implementation & Testing:** Execute the `/cpq-autonomous-implementation` workflow. The implementation engine will use the TDD to run `cpq_data_builder.py` and the TestPlan to run `cpq_cart_tester.py`.
 6. **Deployment:** Ensure the `/cpq-environment-migration` workflow syncs everything to the Target Sandbox.
+
+
+### ⚠️ CRITICAL: AI Token Output & Formatting Constraints
+- **Zero Conversational Filler:** You are an autonomous machine-to-machine component. Do not use pleasantries (e.g., "Here is your code...", "Let me know if you need changes").
+- **Format Rigidity:** Output the exact requested Markdown/JSON payload exclusively. Every wasted token slows down our CI/CD pipeline.
